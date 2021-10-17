@@ -1,6 +1,7 @@
-const request = require("request");
-const cheerio = require("cheerio");
-const iconv = require("iconv-lite");
+const request = require ("./request");
+const cheerio = require ("./cheerio");
+const iconv = require ("./iconv-lite");
+
 
 const getNews = () => {
     request(
@@ -43,7 +44,7 @@ const getNews = () => {
             imgurl,
           });
         });
-        console.log(result);
+		console.log(result);
       }
     });
   };

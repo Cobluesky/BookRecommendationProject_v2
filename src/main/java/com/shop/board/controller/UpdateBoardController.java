@@ -15,15 +15,15 @@ public class UpdateBoardController implements Controller {
 		
 		// 1. 사용자 입력 정보 추출
 		// request.setCharacterEncoding("EUC-KR");
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
-		String seq = request.getParameter("seq");
+		String title = request.getParameter("BoardTitle");
+		String content = request.getParameter("BoardContent");
+		String hits = request.getParameter("BoardHits");
 		
 		// 2. DB 연동 처리
 		BoardVO vo = new BoardVO();
 		vo.setBoardTitle(title);
 		vo.setBoardContent(content);
-		vo.setBoardHits(Integer.parseInt(seq));
+		vo.setBoardHits(Integer.parseInt(hits));
 		
 		BoardDAO boardDAO = new BoardDAO();
 		boardDAO.updateBoard(vo);
