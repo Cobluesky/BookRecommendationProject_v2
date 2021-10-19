@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+	import="java.util.*"
+	import="com.shop.user.MemberDto"
+	import="com.shop.user.Impl.MemberDao"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -9,29 +12,77 @@
 	<title>ThornBooks</title>
 	<link rel="stylesheet" href="css/common.css">
 	<link rel="stylesheet" href="css/my_page.css">
+	<link rel="stylesheet" href="css/header.css">
+	<link rel="stylesheet" href="css/footer.css">
 </head>
 
 <body>
 	<div id="wrap">
-		<%@ include file="header.jsp" %>
+		<header>
+			<%@ include file="Top.jsp" %>
+			<div class="logo">
+				<a href="index.jsp">
+					<h2>ThornBooks</h2>
+				</a>
+			</div>
+			<div class="search">
+				<input type="text" placeholder="Search">
+				<button></button>
+			</div>
+		</header>
+		<%
+			request.setCharacterEncoding("UTF-8");
+			MemberDao mDao = new MemberDao();
+			MemberDto mDto = new MemberDto();
+			mDto = mDao.getUserInfo(mem_id);
+			
+			String name = mDto.getName();
+			String gender = mDto.getGender();
+			String p_num = mDto.getPhonenumber();
+			String email = mDto.getMail();
+		%>
+		
 		<div class="container">
 			<div class="mypage-content">
 				<h2>마이페이지</h2>
 				<div class="common-info">
 					<h3>기본정보</h3>
-					<p>이름:</p>
+					<p>이름: <%=name%></p>
 					<hr>
-					<p>성별:</p>
+					<p>성별: <%=gender%></p>
 				</div>
 				<div class="contact-info">
 					<h3>연락처 정보</h3>
-					<p>전화번호:</p>
+					<p>전화번호: <%=p_num%></p>
 					<hr>
-					<p>이메일:</p>
+					<p>이메일: <%=email%></p>
 				</div>
+				<input type="submit" value="수정" onClick = "location.href = 'my_page_update.jsp'">
 			</div>
 		</div>
-		<%@ include file="footer.jsp" %>
+		<footer>
+			<div class="footer-inner">
+				<div class="footer-logo">
+					<a href="index.jsp">ThornBooks</a>
+				</div>
+				<div class="copyright">
+					<p>
+					사업자 등록번호: 1234-1234<br>
+					대표전화:1234-1234<br>
+					인천광역시
+					</p>
+				</div>
+				<div class="sns">
+					<a href="#none"><img src="images/facebook.png" alt="facebook"></a>
+					<a href="#none"><img src="images/kakao-talk.png" alt="kakao-talk"></a>
+					<a href="#none"><img src="images/twitter.png" alt="twitter"></a>
+				</div>
+			</div>
+		</footer>
 	</div>
+
+	<script src="script/jquery-3.5.1.min.js"></script>
+	<script src="script/search.js"></script>
+	<script src="script/custom.js"></script>
 </body>
 </html>

@@ -46,6 +46,7 @@ public class JoinController extends HttpServlet {
 	    	request.setAttribute("joinResult", insertCheck);
 			HttpSession session = request.getSession();
 			session.setAttribute("idKey", id);
+			session.setAttribute("roleKey", role);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 			dispatcher.forward(request, response);
 

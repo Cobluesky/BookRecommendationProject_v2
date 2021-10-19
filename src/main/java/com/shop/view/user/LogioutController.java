@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.shop.view.controller.Controller;
 
 @WebServlet("/logout.do")
-public class LogioutController extends HttpServlet implements Controller {
+public class LogioutController extends HttpServlet  {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -21,20 +21,5 @@ public class LogioutController extends HttpServlet implements Controller {
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 		dispatcher.forward(request, response);
-		
-
-
-		  
 	}
-
-	@Override
-	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	
 }
-
-

@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="css/footer.css">
 <footer>
 	<div class="footer-inner">
 		<div class="footer-logo">
-			<a href="index.jsp">ThornBooks</a>
-			
+			<a href="index.html">ThornBooks</a>
 		</div>
 		<div class="copyright">
 			<p>

@@ -13,22 +13,28 @@
 <body>
 	<div id="wrap">
 		<%@ include file="header.jsp" %>
-		<div class="container">
-			<div class="addNotice-contents">
-				<h2>공지사항 작성</h2>
-				<div class="notice-header">
-					<label for="">제목</label>
-					<input type="text">
-				</div>
-				<div class="notice-contents">
-					<label for="">내용</label>
-					<textarea name="" id="" cols="120" rows="15"></textarea>
-				</div>
-				<div class="submit-btn">
-					<input type="submit">
+		<form action = "insertBoard.do" method = "post">
+			<div class="container">
+				<div class="addNotice-contents">
+					<h2>공지사항 작성</h2>
+					<div class="notice-header">
+						<label for="">제목</label>
+						<input type="text" name = "title">
+					</div>
+					<div class="notice-writer">
+						<label for="">작성자</label>
+						<input type="text" name = "writer">
+					</div>
+					<div class="notice-contents">
+						<label for="">내용</label>
+						<textarea name="content" cols="120" rows="15"></textarea>
+					</div>
+					<div class="submit-btn">
+						<input type="submit">
+					</div>
 				</div>
 			</div>
-		</div>
+		</form>
 		<%@ include file="footer.jsp" %>
 	</div>
 

@@ -1,5 +1,7 @@
 ﻿package com.shop.board.controller;
 
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -7,7 +9,8 @@ import com.shop.board.BoardVO;
 import com.shop.board.Impl.BoardDAO;
 import com.shop.view.controller.Controller;
 
-public class InsertBoardController implements Controller {
+@WebServlet("/insertBoard.do")
+public class InsertBoardController extends HttpServlet implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {

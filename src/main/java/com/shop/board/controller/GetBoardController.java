@@ -1,5 +1,6 @@
 ﻿package com.shop.board.controller;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -8,6 +9,7 @@ import com.shop.board.BoardVO;
 import com.shop.board.Impl.BoardDAO;
 import com.shop.view.controller.Controller;
 
+@WebServlet("/getBoard.do")
 public class GetBoardController implements Controller {
 
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {

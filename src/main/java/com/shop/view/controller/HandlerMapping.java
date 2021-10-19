@@ -13,8 +13,8 @@ public class HandlerMapping {
 
 	public HandlerMapping() {
 		mappings = new HashMap<String, Controller>();
-		mappings.put("/login.do", new LoginController());
-		mappings.put("/logout.do", new LogioutController());		
+		mappings.put("/login.do", (Controller) new LoginController());
+		mappings.put("/logout.do", (Controller) new LogioutController());		
 	}
 
 	public Controller getController(String path) {

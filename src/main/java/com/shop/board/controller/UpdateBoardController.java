@@ -1,5 +1,6 @@
 ﻿package com.shop.board.controller;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -7,6 +8,7 @@ import com.shop.board.BoardVO;
 import com.shop.board.Impl.BoardDAO;
 import com.shop.view.controller.Controller;
 
+@WebServlet("/updateBoard.do")
 public class UpdateBoardController implements Controller {
 
 	@Override

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	import="java.util.*"
-	import="com.shop.user.*"
-	import="com.shop.user.Impl.*"
+	import="com.shop.user.Impl.MemberDao"
+	import="com.shop.user.MemberDto"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
