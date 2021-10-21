@@ -116,7 +116,55 @@ public class MemberDao {
 		return flag;
 	}
 	
-	//¸¶ÀÌÆäÀÌÁö ¼öÁ¤À» À§ÇÑ »õ·Î¿î ¸Ş¼Òµå
+	//ê´€ë¦¬ì ë©¤ë²„ê²€ìƒ‰ìš©
+	public List listmembers(MemberDto mDto) {
+  		Connection con = null;
+        PreparedStatement pstmt = null;
+  		List<MemberDto> memList = new ArrayList<MemberDto>();
+  		String mName = mDto.getName();
+  		try {
+  			con = this.getConnection();
+  			String query = "select * from userinfotbl";
+  			
+  			if((mName != null && mName.length() != 0)) {
+  				query += " where name=?";
+  				pstmt = con.prepareStatement(query);
+                  pstmt.setString(1, mName);
+  			}else {
+  				pstmt = con.prepareStatement(query);
+  			}
+  			ResultSet rs = pstmt.executeQuery();
+  			while(rs.next()) {
+  				
+  				String id = rs.getString("userid");
+  				String pwd = rs.getString("userpw");
+  				String name = rs.getString("username");
+  				String p_num = rs.getString("usertel");
+  				String email = rs.getString("useremail");
+  				String gender = rs.getString("usergender");
+  				String role = rs.getString("role");
+  				
+  				MemberDto dto = new MemberDto();
+  				
+                		dto.setId(id);
+                		dto.setPassword(pwd);
+               			dto.setName(name);
+                		dto.setPhonenumber(p_num);
+                		dto.setMail(email);
+                		dto.setGender(gender);
+                		dto.setRole(role);
+                  
+                		memList.add(dto);
+  			}
+  		}catch(Exception e) {
+  			e.printStackTrace();
+  		}finally {
+          	this.close(con, pstmt, null);
+          }
+  		return memList;
+  	}
+	
+	//ë§ˆì´í˜ì´ì§€ ìˆ˜ì •ì„ ìœ„í•œ ìƒˆë¡œìš´ ë©”ì†Œë“œ
 	public boolean memberUpdate(MemberDto mDTO) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -145,7 +193,7 @@ public class MemberDao {
 		return flag;
 	}
 
-	// Top.jsp °ü¸®ÀÚ ÆäÀÌÁö¿Í ¸¶ÀÌÆäÀÌÁö ±¸ºĞÀ» À§ÇÑ ¸Ş¼Òµå
+	// Top.jsp ê´€ë¦¬ì í˜ì´ì§€ì™€ ë§ˆì´í˜ì´ì§€ êµ¬ë¶„ì„ ìœ„í•œ ë©”ì†Œë“œ
 	public String roleInfo(String id) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -228,15 +276,15 @@ public List listmembers(MemberDto mDto) {
 				
 				MemberDto dto = new MemberDto();
 				
-            dto.setId(id);
-            dto.setPassword(pwd);
-            dto.setName(name);
-            dto.setPhonenumber(p_num);
-            dto.setMail(email);
-            dto.setGender(gender);
-            dto.setRole(role);
+            			dto.setId(id);
+            			dto.setPassword(pwd);
+            			dto.setName(name);
+            			dto.setPhonenumber(p_num);
+            			dto.setMail(email);
+            			dto.setGender(gender);
+            			dto.setRole(role);
               
-            memList.add(dto);
+            			memList.add(dto);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
