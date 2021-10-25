@@ -39511,7 +39511,13 @@ function setPrintData() {
               imgurl,
             });
           });
-          document.write(JSON.stringify(result));
+			//1조 수정
+//          document.write(JSON.stringify(result));
+			for(var i=0;i<result.length;i++){
+				document.querySelectorAll('.book a img')[i].src = result[i]['imgurl'];
+				document.getElementsByClassName('book-title')[i].innerHTML = result[i]['title'];
+				document.getElementsByClassName('author')[i].innerHTML = result[i]['author'];
+			}
         }
       });
   };
