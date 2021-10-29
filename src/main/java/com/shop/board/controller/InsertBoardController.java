@@ -1,5 +1,9 @@
-﻿package com.shop.board.controller;
+package com.shop.board.controller;
 
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,10 +14,10 @@ import com.shop.board.Impl.BoardDAO;
 import com.shop.view.controller.Controller;
 
 @WebServlet("/insertBoard.do")
-public class InsertBoardController extends HttpServlet implements Controller {
+public class InsertBoardController extends HttpServlet {
 
 	@Override
-	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("글 등록 처리");
 		
 		// 1. 사용자 입력 정보 추출
@@ -30,8 +34,9 @@ public class InsertBoardController extends HttpServlet implements Controller {
 		BoardDAO boardDAO = new BoardDAO();
 		boardDAO.insertBoard(vo);
 		
-		// 3. 화면 네비게이션
-		return "getBoardList.do";
+		RequestDispatcher dispatcher = request.getRequestDispatcher("admin_notice.jsp");
+		dispatcher.forward(request, response);
+
 	}
 
 }
