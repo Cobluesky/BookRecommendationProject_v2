@@ -1,2 +1,3 @@
 eclipse.preferences.version=1
-encoding//src/main/java/com/shop/board/Impl/BoardServiceImpl.java=UTF-8
+encoding//src/main/java/com/shop/board/Impl/BoardDAO.java=UTF-8
+encoding//src/main/java/com/shop/user/Impl/MemberDao.java=UTF-8

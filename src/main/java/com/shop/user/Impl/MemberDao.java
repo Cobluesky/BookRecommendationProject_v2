@@ -116,55 +116,7 @@ public class MemberDao {
 		return flag;
 	}
 	
-	//관리자 멤버검색용
-	public List listmembers(MemberDto mDto) {
-  		Connection con = null;
-        PreparedStatement pstmt = null;
-  		List<MemberDto> memList = new ArrayList<MemberDto>();
-  		String mName = mDto.getName();
-  		try {
-  			con = this.getConnection();
-  			String query = "select * from userinfotbl";
-  			
-  			if((mName != null && mName.length() != 0)) {
-  				query += " where name=?";
-  				pstmt = con.prepareStatement(query);
-                  pstmt.setString(1, mName);
-  			}else {
-  				pstmt = con.prepareStatement(query);
-  			}
-  			ResultSet rs = pstmt.executeQuery();
-  			while(rs.next()) {
-  				
-  				String id = rs.getString("userid");
-  				String pwd = rs.getString("userpw");
-  				String name = rs.getString("username");
-  				String p_num = rs.getString("usertel");
-  				String email = rs.getString("useremail");
-  				String gender = rs.getString("usergender");
-  				String role = rs.getString("role");
-  				
-  				MemberDto dto = new MemberDto();
-  				
-                		dto.setId(id);
-                		dto.setPassword(pwd);
-               			dto.setName(name);
-                		dto.setPhonenumber(p_num);
-                		dto.setMail(email);
-                		dto.setGender(gender);
-                		dto.setRole(role);
-                  
-                		memList.add(dto);
-  			}
-  		}catch(Exception e) {
-  			e.printStackTrace();
-  		}finally {
-          	this.close(con, pstmt, null);
-          }
-  		return memList;
-  	}
-	
-	//마이페이지 수정을 위한 새로운 메소드
+	//留덉씠�럹�씠吏� �닔�젙�쓣 �쐞�븳 �깉濡쒖슫 硫붿냼�뱶
 	public boolean memberUpdate(MemberDto mDTO) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -193,7 +145,7 @@ public class MemberDao {
 		return flag;
 	}
 
-	// Top.jsp 관리자 페이지와 마이페이지 구분을 위한 메소드
+	// Top.jsp 愿�由ъ옄 �럹�씠吏��� 留덉씠�럹�씠吏� 援щ텇�쓣 �쐞�븳 硫붿냼�뱶
 	public String roleInfo(String id) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

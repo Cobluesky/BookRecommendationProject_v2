@@ -4,7 +4,7 @@
 		<%@ include file="Top.jsp" %>
 		<div class="logo">
 			<a href="index.jsp">
-				<h2>ThornBooks</h2>
+				<img src="images/thornbooks.png"/>
 			</a>
 		</div>
 		<div class="search">

@@ -3,7 +3,9 @@
 <footer>
 	<div class="footer-inner">
 		<div class="footer-logo">
-			<a href="index.html">ThornBooks</a>
+			<a href="index.html">
+				<img src="images/thornbooks.png"/>
+			</a>
 		</div>
 		<div class="copyright">
 			<p>

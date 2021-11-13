@@ -9,11 +9,11 @@ import com.shop.common.*;
 
 import com.shop.board.BoardVO;
 public class BoardDAO {
-	// JDBC 관련 변수
+	// JDBC 愿��젴 蹂��닔
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
-	// SQL 명령어들
+	// SQL 紐낅졊�뼱�뱾
 	private final String BOARD_INSERT = "insert into BoardTable (BoardId, BoardTitle, BoardContent, BoardAuthor, BoardDate, BoardHits) "
 										+ "values((select boardid from boardtable ALIAS_FOR_SUBQUERY order by boardid desc limit 1)+1, ?, ?, ?, now(), 0)";
 	private final String BOARD_UPDATE = "update BoardTable set BoardTitle=?, BoardContent=? where BoardId=?";
@@ -21,10 +21,10 @@ public class BoardDAO {
 	private final String BOARD_GET = "select * from BoardTable where BoardId=?";
 	private final String BOARD_LIST = "select * from BoardTable order by BoardId desc";
 
-	// CRUD 기능의 메소드 구현
-	// 글 등록
+	// CRUD 湲곕뒫�쓽 硫붿냼�뱶 援ы쁽
+	// 湲� �벑濡�
 	public void insertBoard(BoardVO vo) {
-		System.out.println("===> JDBC로 insertBoard() 기능 처리");
+		System.out.println("===> JDBC Insertboard 처리");
 		try {
 			conn = JDBCConnection.getConnection();
 			stmt = conn.prepareStatement(BOARD_INSERT);
@@ -39,9 +39,9 @@ public class BoardDAO {
 		}
 	}
 
-	// 글 수정
+	// 湲� �닔�젙
 	public void updateBoard(BoardVO vo) {
-		System.out.println("===> JDBC로 updateBoard() 기능 처리");
+		System.out.println("===> JDBC濡� updateBoard() 湲곕뒫 泥섎━");
 		try {
 			conn = JDBCConnection.getConnection();
 			stmt = conn.prepareStatement(BOARD_UPDATE);
@@ -56,9 +56,9 @@ public class BoardDAO {
 		}
 	}
 
-	// 글 삭제
+	// 湲� �궘�젣
 	public void deleteBoard(BoardVO vo) {
-		System.out.println("===> JDBC로 deleteBoard() 기능 처리");
+		System.out.println("===> JDBC濡� deleteBoard() 湲곕뒫 泥섎━");
 		try {
 			conn = JDBCConnection.getConnection();
 			stmt = conn.prepareStatement(BOARD_DELETE);
@@ -71,9 +71,9 @@ public class BoardDAO {
 		}
 	}
 
-	// 글 상세 조회
+	// 湲� �긽�꽭 議고쉶
 	public BoardVO getBoard(BoardVO vo) {
-		System.out.println("===> JDBC로 getBoard() 기능 처리");
+		System.out.println("===> JDBC濡� getBoard() 湲곕뒫 泥섎━");
 		BoardVO board = null;
 		try {
 			conn = JDBCConnection.getConnection();
@@ -97,11 +97,11 @@ public class BoardDAO {
 		return board;
 	}
 
-	// 글 목록 조회
+	// 湲� 紐⑸줉 議고쉶
 	// 	private final String BOARD_LIST = "select * from board order by seq desc";
 	
 	public List<BoardVO> getBoardList(BoardVO vo) {
-		System.out.println("===> JDBC로 getBoardList() 기능 처리");
+		System.out.println("===> JDBC濡� getBoardList() 湲곕뒫 泥섎━");
 		List<BoardVO> boardList = new ArrayList<BoardVO>();
 		try {
 			conn = JDBCConnection.getConnection();
@@ -125,9 +125,9 @@ public class BoardDAO {
 		return boardList;
 	}
 	
-	//조회수 추가 함수
+	//議고쉶�닔 異붽� �븿�닔
 	public void viewCount(BoardVO vo) {
-		System.out.println("===> JDBC로 viewCount() 기능 처리");
+		System.out.println("===> JDBC濡� viewCount() 湲곕뒫 泥섎━");
 		try {
 			conn = JDBCConnection.getConnection();
 			stmt = conn.prepareStatement("update boardtable set boardhits=? where boardid=?");
