@@ -1,14 +1,18 @@
 .container{
-	height: 400px;
+	height: 500px;
 }
 .books{
 	width: 920px;
-	height: 100%;
+	height: 70%;
 	margin: auto;
 	display: flex;
 	justify-content: space-around;
-	align-content: space-around;
+	align-content: space-between;
 	flex-wrap: wrap;
+	display: none;
+}
+.books.active{
+	display: flex;
 }
 .book{
 	float: left;
